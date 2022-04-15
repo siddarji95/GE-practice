@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import Child from './Child';
 
-function App() {
+export default function App() {
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    setInterval(() => {
+      setLoad(true);
+    }, 5000);
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>Parent Component</div>
+      {load && <Child />}
     </div>
   );
 }
 
-export default App;
